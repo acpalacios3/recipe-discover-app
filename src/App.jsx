@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import RecipeCard from './components/RecipeCard'
 
 function App() {
   
 
   return (
     <div>
-       Hello 
+       <RecipeCard/>
     </div>
    
   )
