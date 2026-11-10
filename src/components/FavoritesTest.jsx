@@ -6,6 +6,7 @@ function FavoritesTest() {
     const {
         favorites,
         addFavorite,
+        removeFavorite,
         isFavorite
     } = useContext(FavoritesContext);
 
@@ -17,6 +18,13 @@ function FavoritesTest() {
                 console.log("added to favorites", favorites);
             }}>
                 Add Recipe 13
+            </button>
+
+            <button onClick={() => {
+                removeFavorite("13");
+                console.log("remove from favorites", favorites);
+            }}>
+                delete Recipe 13
             </button>
 
         </div>

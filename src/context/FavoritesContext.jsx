@@ -9,12 +9,20 @@ export default function FavoritesAppProvider({ children }) {
     //  use useLocalStorage custom hook
     const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
+    // add favorites from localStorage
     const addFavorite = (recipeId) => {
-        setFavorites(prevFavorites => [
-            ...prevFavorites,
-            recipeId
-        ]);
+        setFavorites(prevFavorites => [...prevFavorites, recipeId]);
     };
+
+
+    // Remove a recipe from favorites
+    // filter() creates a new array keeping all the IDs except the one we want to remove.
+    const removeFavorite = (recipeId) => {
+        setFavorites(prevFavorites =>
+            prevFavorites.filter(id => id !== recipeId)
+        );
+    };
+
 
     // check if a recipe is already a favorite, includes() checks if an element exists in an array or if a text contains certain characters
     const isFavorite = (recipeId) => {
@@ -25,7 +33,7 @@ export default function FavoritesAppProvider({ children }) {
 
 
     return (
-        <FavoritesContext.Provider value={{ favorites, addFavorite, isFavorite }}>
+        <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>
 
             {children}
 

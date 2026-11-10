@@ -1,3 +1,6 @@
+// useLocalStorage: A custom hook to synchronize a piece of state with the browser’s localStorage.
+//  This will be used to persist the user’s list of favorite recipes.
+
 import { useEffect, useState } from "react"
 
 export default function useLocalStorage(key, initialValue) {
