@@ -24,21 +24,15 @@ export default function RecipeCard() {
 
   return (
     <div>
-      <p>Welcome to TheMealDB</p>
+      <h2>Welcome to TheMealDB</h2>
+
+      <div className="category-container">
 
       {data && data.categories.map((category) => (
 
         <div className="detail-category" key={category.idCategory}>
 
-          <div>
-            {/* <strong>Category:</strong> */}
-            <div>{category.strCategory}</div>
-          </div>
-
-          {/* <div>
-            <strong>Category Description:</strong>
-            <div>{category.strCategoryDescription}</div>
-          </div> */}
+          <div className="image-card">
 
           <img
             src={category.strCategoryThumb}
@@ -46,9 +40,15 @@ export default function RecipeCard() {
             width="150"
           />
 
+          </div>
+
+          <h3>{category.strCategory}</h3>
+
         </div>
 
       ))}
+
+      </div>
 
     </div>
 
