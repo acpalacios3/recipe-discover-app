@@ -1,55 +1,57 @@
 import { useState, useEffect } from "react";
 
-export default function useFetcher() {
+export default function useFetcher(url) {
 
    // const [variable, setter] = useState(initial_Value)
-  const [dataCategory, setDataCategory] = useState(null);
+   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("Running the useEffect Function");
-    // Lets reset all our variables! 
-    // We are loading, Currently no errors, No data visible.
-    setLoading(true)
-    setError(null)
-    setDataCategory(null)
     
-    async function fetchData() {
-     
-        const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
-
-        // If the response does not come back ok...
-        if (!response.ok) {
-          // Tell the componenent we are not loading
-          setLoading(false)
-          // and set the Response Status to the error variable
-          setError(response.status)
-        }
-
-        // Otherwise, let's get the data from the Response
-        const json = await response.json()
-        console.log(json)
-
-         // save it in the data
-        setDataCategory(json)
-        
-         // And tell the component that it is no longer loading.
-        setLoading(false)
       
+    async function fetchData() {
+
+      try{
+         // We are loading, Currently no errors, No data visible.
+          setLoading(true)
+          setError(null)
+          // const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+          const response = await fetch(url)
+
+          // If the response does not come back ok...
+          if (!response.ok) {
+              throw new Error (`Error: ${response.status}`);
+          }
+
+          // Otherwise, let's get the data from the Response
+          const json = await response.json()
+          console.log('json ===> ',json)
+
+            // save it in the data
+          setData(json)
+
+        } catch (err) {
+            // set to the error variable
+            setError(err.message);
+
+        }  finally {
+          // Tell the componenent we are not loading
+            setLoading(false)
+
+        }
       
     }
      
     fetchData();
 
-  }, []);
+  }, [url]);
 
-  console.log(dataCategory);
-  console.log(loading);
-  console.log(error);
+  console.log('data ===>: '+ data);
+  console.log('loading ===>: '+loading);
+  console.log('error ===>: '+ error);
   
-
-  return {dataCategory, 
+  return {data, 
           loading, 
           error
   };

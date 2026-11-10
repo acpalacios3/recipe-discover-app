@@ -2,7 +2,6 @@ import useFetcher from "../hooks/useFetcher";
 
 export default function RecipeCard() {
 
-  const { dataCategory, loading, error } = useFetcher();
 
   // {"categories":[
   //   {"idCategory":"1",
@@ -15,12 +14,19 @@ export default function RecipeCard() {
   //    "strCategoryThumb":"https:\/\/www.themealdb.com\/images\/category\/chicken.png",
   //    "strCategoryDescription":"Chicken is a type of domesticated fowl, a subspecies of the red junglefowl. It is one of the most common and widespread domestic animals, with a total population of more than 19 billion as of 2011.[1] Humans commonly keep chickens as a source of food (consuming both their meat and eggs) and, more rarely, as pets."}
 
+  const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
+
+  const {data, loading, error} = useFetcher(url);
+
+  if (loading) return <p>Loading categories...</p>;
+
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
       <p>Welcome to TheMealDB</p>
 
-      {dataCategory && dataCategory.categories.map((category) => (
+      {data && data.categories.map((category) => (
 
         <div className="detail-category" key={category.idCategory}>
 
