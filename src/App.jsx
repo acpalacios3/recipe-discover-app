@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import RecipeCard from './components/RecipeCard'
+import FavoritesTest from './components/FavoritesTest'
 
 function App() {
   
@@ -7,6 +8,7 @@ function App() {
   return (
     <div>
        <RecipeCard/>
+       <FavoritesTest/>
     </div>
    
   )

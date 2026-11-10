@@ -2,10 +2,9 @@ import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 // create Context
-const FavoritesContext = createContext();
+export const FavoritesContext = createContext();
 
 export default function FavoritesAppProvider({ children }) {
-
 
     //  use useLocalStorage custom hook
     const [favorites, setFavorites] = useLocalStorage('favorites', []);
@@ -17,8 +16,16 @@ export default function FavoritesAppProvider({ children }) {
         ]);
     };
 
+    // check if a recipe is already a favorite, includes() checks if an element exists in an array or if a text contains certain characters
+    const isFavorite = (recipeId) => {
+
+        return favorites.includes(recipeId);
+
+    };
+
+
     return (
-        <FavoritesContext.Provider value={{ favorites, addFavorite }}>
+        <FavoritesContext.Provider value={{ favorites, addFavorite, isFavorite }}>
 
             {children}
 

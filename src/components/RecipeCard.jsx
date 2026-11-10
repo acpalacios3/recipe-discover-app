@@ -16,7 +16,7 @@ export default function RecipeCard() {
 
   const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
 
-  const {data, loading, error} = useFetcher(url);
+  const { data, loading, error } = useFetcher(url);
 
   if (loading) return <p>Loading categories...</p>;
 
