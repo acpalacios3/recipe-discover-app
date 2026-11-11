@@ -75,7 +75,7 @@ export default function RecipeDetail() {
     if (!recipe) return <p>Recipe not found.</p>;
     // check the recipe, if true: the recipe is already saved. If false: the recipe is not yet saved.
     const favorite = isFavorite(recipe.idMeal);
-    
+
     console.log("Recipe ID:", recipe.idMeal);
     console.log("Is Favorite from RecipeDetails:", favorite);
 
@@ -103,11 +103,11 @@ export default function RecipeDetail() {
             <h1>{recipe.strMeal}</h1>
 
             <div>
-            
-            <img
-                src={recipe.strMealThumb}
-                alt={recipe.strMeal}
-            />
+
+                <img
+                    src={recipe.strMealThumb}
+                    alt={recipe.strMeal}
+                />
             </div>
 
             {/* if favorite === false: add to Favorites. If favorite === true:remove from Favorites */}

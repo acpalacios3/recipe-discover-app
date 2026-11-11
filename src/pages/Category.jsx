@@ -42,15 +42,15 @@ export default function Category() {
 
             <div className='recipe-container'>
 
-            {data && data.meals &&data.meals.map((meal) => (
+                {data && data.meals && data.meals.map((meal) => (
 
-                <RecipeCard
-                key={meal.idMeal}
-                recipe={meal}
-             
-                />
-            ))}
-            </div>   
+                    <RecipeCard
+                        key={meal.idMeal}
+                        recipe={meal}
+
+                    />
+                ))}
+            </div>
 
         </div>
     )

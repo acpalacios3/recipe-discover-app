@@ -25,35 +25,34 @@ export default function RecipeCard() {
 
   return (
     <div>
-         <h2>Welcome to TheMealDB</h2>
-     
+      <h2>Welcome to TheMealDB</h2>
+
       <div className="category-container">
 
-      {data && data.categories.map((category) => (
+        {data && data.categories.map((category) => (
 
-        <div className="detail-category" key={category.idCategory}>
+          <div className="detail-category" key={category.idCategory}>
 
-          {/* create a link and dynamically put the name of each category in the URL */}
-          <Link to={`/category/${category.strCategory}`}>
+            {/* create a link and dynamically put the name of each category in the URL */}
+            <Link to={`/category/${category.strCategory}`}>
 
+              <div className="image-card">
 
-          <div className="image-card">
+                <img
+                  src={category.strCategoryThumb}
+                  alt={category.strCategory}
+                  width="150"
+                />
+              </div>
 
-            <img
-              src={category.strCategoryThumb}
-              alt={category.strCategory}
-              width="150"
-            />
+              <h3>{category.strCategory}</h3>
+
+            </Link>
+
           </div>
 
-          <h3>{category.strCategory}</h3>
 
-          </Link>
-
-        </div>
-        
-
-      ))}
+        ))}
 
       </div>
 
