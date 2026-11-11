@@ -9,7 +9,7 @@ export default function FavoritesAppProvider({ children }) {
     //  use useLocalStorage custom hook
     const [favorites, setFavorites] = useLocalStorage('favorites', []);
 
-    console.log("Favorites array:", favorites);
+    console.log("Favorites array from FavoritiesContext:", favorites);
 
     // add favorites from localStorage
     const addFavorite = (recipeId) => {

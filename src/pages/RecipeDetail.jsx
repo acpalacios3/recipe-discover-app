@@ -77,7 +77,7 @@ export default function RecipeDetail() {
     const favorite = isFavorite(recipe.idMeal);
     
     console.log("Recipe ID:", recipe.idMeal);
-    console.log("Is Favorite:", favorite);
+    console.log("Is Favorite from RecipeDetails:", favorite);
 
     // create ingredients list
     const ingredients = [];
