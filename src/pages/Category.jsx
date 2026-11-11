@@ -19,8 +19,8 @@
 //       "idMeal":"53481","strArea":null,"strCountry":"Brazil"},
 
 import { useParams } from 'react-router-dom'
-import { useEffect } from "react";
 import useFetcher from '../hooks/useFetcher';
+import RecipeCard from '../components/RecipeCard';
 
 export default function Category() {
 
@@ -29,6 +29,7 @@ export default function Category() {
 
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`;
 
+    // get API data and request status
     const { data, loading, error } = useFetcher(url);
 
     if (loading) return <p>Loading meals...</p>;
@@ -36,21 +37,20 @@ export default function Category() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
-            <h1>Category recipes</h1>
+        <div >
+            <h1>{categoryName} Recipes</h1>
+
+            <div className='recipe-container'>
+
             {data && data.meals &&data.meals.map((meal) => (
 
-                <div key={meal.idMeal}>
-
-                    <img
-                        src={meal.strMealThumb}
-                        alt={meal.strMeal}
-                        width="100"
-                    />
-                    <h3>{meal.strMeal}</h3>
-
-                </div>
+                <RecipeCard
+                key={meal.idMeal}
+                recipe={meal}
+             
+                />
             ))}
+            </div>   
 
         </div>
     )

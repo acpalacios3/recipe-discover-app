@@ -22,3 +22,30 @@
     margin-top: 10px;
     text-align: center;
 }
+
+
+.recipe-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.recipe-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.recipe-card {
+    text-align: center;
+}
