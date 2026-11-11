@@ -57,3 +57,19 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #94a7c5;
+  padding: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px; 
+  margin-left: auto; 
+}
