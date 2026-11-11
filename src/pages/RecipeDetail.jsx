@@ -102,13 +102,15 @@ export default function RecipeDetail() {
 
             <h1>{recipe.strMeal}</h1>
 
-            <div>
+            <div className="recipe-main">
 
-                <img
+                <div className="recipe-image">
+
+                <img 
                     src={recipe.strMealThumb}
                     alt={recipe.strMeal}
                 />
-            </div>
+    
 
             {/* if favorite === false: add to Favorites. If favorite === true:remove from Favorites */}
             <button
@@ -121,18 +123,26 @@ export default function RecipeDetail() {
                 {favorite ? "Remove from Favorites" : "Add to Favorites"}
             </button>
 
-            <h2>Ingredients</h2>
-            <ul>
-                {ingredients.map((item, index) => (
-                    <li key={index}>
-                        {item.measure} {item.ingredient}
-                    </li>
-                ))}
-            </ul>
+            </div>
+            
+            <div className="ingredients">
+                <h1>Ingredients</h1>
+                <ul>
+                    {ingredients.map((item, index) => (
+                        <li key={index}>
+                            {item.measure} {item.ingredient}
+                        </li>
+                    ))}
+                </ul>
 
-            <h2>Instructions</h2>
+            </div>
+            </div>
+            
+            <div className="instructions">
+                <h2>Instructions</h2>
 
-            <p>{recipe.strInstructions}</p>
+                <p>{recipe.strInstructions}</p>
+            </div>
 
         </div>
     );

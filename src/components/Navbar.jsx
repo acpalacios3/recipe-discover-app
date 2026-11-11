@@ -42,7 +42,7 @@ export default function Navbar() {
           onChange={(event) => setSearchText(event.target.value)}
         />
 
-        <button type="submit">Search</button>
+        {/* <button type="submit">Search</button> */}
       </form>
 
     </nav>

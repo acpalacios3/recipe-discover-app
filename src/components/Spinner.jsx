@@ -3,7 +3,8 @@
 
 export default function Spinner() {
   return (
-    <div>
+    <div className="spinner-container">
+      <div className="spinner"></div>
       <p>Loading recipes...</p>
     </div>
   );

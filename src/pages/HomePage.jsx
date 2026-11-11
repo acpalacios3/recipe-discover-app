@@ -24,7 +24,7 @@ export default function RecipeCard() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
+    <div className="home-container">
       <h2>Welcome to TheMealDB</h2>
 
       <div className="category-container">

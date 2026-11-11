@@ -17,6 +17,10 @@ export default function useFetcher(url) {
         setLoading(true)
         setError(null)
         // const response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+
+        // simulate 1 seconds of loading
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
         const response = await fetch(url)
 
         // If the response does not come back ok...
