@@ -34,16 +34,26 @@
 //               "strCreativeCommonsConfirmed":null,
 //               "dateModified":null}]} 
 
- 
- 
+//  A dynamic route that fetches and displays the full details for a single recipe
+
 import { useParams } from "react-router-dom";
 import useFetcher from "../hooks/useFetcher";
+
+import { useContext } from "react";
+import { FavoritesContext } from "../context/FavoritesContext"
 
 export default function RecipeDetail() {
 
     // get recipe ID from URL
     // useParams() is a React Router hook, it retrieves dynamic parameters from the URL.
     const { recipeId } = useParams();
+
+    // FavoritesContext context functions
+    const {
+        addFavorite,
+        removeFavorite,
+        isFavorite
+    } = useContext(FavoritesContext);
 
     // API url to get recipe details
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`;
@@ -63,6 +73,11 @@ export default function RecipeDetail() {
     }
 
     if (!recipe) return <p>Recipe not found.</p>;
+    // check the recipe, if true: the recipe is already saved. If false: the recipe is not yet saved.
+    const favorite = isFavorite(recipe.idMeal);
+    
+    console.log("Recipe ID:", recipe.idMeal);
+    console.log("Is Favorite:", favorite);
 
     // create ingredients list
     const ingredients = [];
@@ -87,10 +102,24 @@ export default function RecipeDetail() {
 
             <h1>{recipe.strMeal}</h1>
 
+            <div>
+            
             <img
                 src={recipe.strMealThumb}
                 alt={recipe.strMeal}
             />
+            </div>
+
+            {/* if favorite === false: add to Favorites. If favorite === true:remove from Favorites */}
+            <button
+                onClick={() =>
+                    favorite
+                        ? removeFavorite(recipe.idMeal)
+                        : addFavorite(recipe.idMeal)
+                }
+            >
+                {favorite ? "Remove from Favorites" : "Add to Favorites"}
+            </button>
 
             <h2>Ingredients</h2>
             <ul>
