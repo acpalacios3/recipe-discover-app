@@ -1,5 +1,12 @@
-import { useState } from 'react'
-import RecipeCard from './components/RecipeCard'
+import { Routes, Route } from 'react-router-dom'
+
+import HomePage from './pages/HomePage'
+import Category from './pages/Category'
+import Favorites from './pages/Favorites'
+import RecipeDetail from './pages/RecipeDetail'
+import Search from './pages/Search'
+
+
 import FavoritesTest from './components/FavoritesTest'
 
 function App() {
@@ -7,8 +14,19 @@ function App() {
 
   return (
     <div>
-       <RecipeCard/>
-       <FavoritesTest/>
+      
+       {/* <FavoritesTest/> */}
+       <Routes>
+            <Route path="/" element={<HomePage />} />
+
+            <Route path="/category/:categoryName" element={<Category />} />
+
+            <Route path="/favorites" element={<Favorites />} />
+
+            <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
+
+            <Route path="/search" element={<Search />} />
+        </Routes>
     </div>
    
   )
